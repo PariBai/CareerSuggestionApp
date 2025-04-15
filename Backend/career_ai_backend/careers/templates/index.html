@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Career Suggestion - Find Your Perfect Career{% endblock %}
+
+{% block content %}
+<div class="container1">
+  <!-- Hero Section (with reduced bottom margin) -->
+  <section class="home-hero" style="margin-bottom: 1.5rem;">
+    <div class="hero-content">
+      <h1 class="hero-title">Find Your Perfect Career Path</h1>
+      <p class="hero-text">
+        Our AI-powered platform analyzes your unique skills, interests, and goals to recommend 
+        the most suitable career options for you.
+      </p>
+    </div>
+    <div class="hero-image">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 400">
+        <path fill="#457b9d" d="M250,100 C350,50 450,150 400,250 C350,350 150,350 100,250 C50,150 150,50 250,100 Z" opacity="0.2"/>
+        <path fill="#457b9d" d="M150,200 L200,150 L250,200 L300,150 L350,200 L300,250 L250,200 L200,250 Z"/>
+        <circle cx="250" cy="200" r="50" fill="#f1faee"/>
+        <path fill="#1d3557" d="M250,180 L260,220 L240,220 Z"/>
+        <path fill="#1d3557" d="M230,200 L270,200 L250,230 Z"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Assessment Form (with reduced top padding) -->
+  <section class="assessment-form" style="padding-top: 1.5rem;">
+    <h2 class="section-title">Career Assessment</h2>
+    <form method="POST" action="{% url 'suggest_career' %}" class="career-form">
+      {% csrf_token %}
+      
+      <div class="form-row">
+        <div class="form-group half-width">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        </div>
+        
+        <div class="form-group half-width">
+          <label for="age">Your Age</label>
+          <input type="number" id="age" name="age" placeholder="Enter your age" min="16" max="99" required>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="skills">Your Skills</label>
+        <select name="skills" id="skills" multiple required>
+          <option value="Python">Python</option>
+          <option value="Java">Java</option>
+          <option value="JavaScript">JavaScript</option>
+          <option value="HTML/CSS">HTML/CSS</option>
+          <option value="React">React</option>
+          <option value="Node.js">Node.js</option>
+          <option value="SQL">SQL</option>
+          <option value="Machine Learning">Machine Learning</option>
+          <option value="Data Analysis">Data Analysis</option>
+          <option value="Project Management">Project Management</option>
+          <option value="Communication">Communication</option>
+          <option value="Design">Design</option>
+          <option value="Leadership">Leadership</option>
+          <option value="Teamwork">Teamwork</option>
+          <option value="Public Speaking">Public Speaking</option>
+          <option value="Writing">Writing</option>
+          <option value="Marketing">Marketing</option>
+          <option value="Sales">Sales</option>
+          <option value="Financial Management">Financial Management</option>
+          <option value="Teaching">Teaching</option>
+          <option value="Research">Research</option>
+          <option value="UX Design">UX Design</option>
+          <option value="Critical Thinking">Critical Thinking</option>
+          <option value="Time Management">Time Management</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="interests">Your Interests</label>
+        <select name="interests" id="interests" multiple required>
+          <option value="AI">Artificial Intelligence</option>
+          <option value="Web Development">Web Development</option>
+          <option value="Mobile Apps">Mobile Apps</option>
+          <option value="Cybersecurity">Cybersecurity</option>
+          <option value="Data Science">Data Science</option>
+          <option value="Cloud Computing">Cloud Computing</option>
+          <option value="UX/UI Design">UX/UI Design</option>
+          <option value="Business">Business</option>
+          <option value="Healthcare">Healthcare</option>
+          <option value="Education">Education</option>
+          <option value="Finance">Finance</option>
+          <option value="Creative Arts">Creative Arts</option>
+          <option value="Psychology">Psychology</option>
+          <option value="Law">Law</option>
+          <option value="Travel">Travel</option>
+          <option value="Sports">Sports</option>
+          <option value="Gaming">Gaming</option>
+          <option value="Entrepreneurship">Entrepreneurship</option>
+          <option value="Social Impact">Social Impact</option>
+          <option value="Writing & Storytelling">Writing & Storytelling</option>
+          <option value="Music">Music</option>
+          <option value="Fashion">Fashion</option>
+          <option value="Environmental Sustainability">Environmental Sustainability</option>
+          <option value="Space & Astronomy">Space & Astronomy</option>
+          
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="goals">Your Career Goals</label>
+        <textarea id="goals" name="goals" placeholder="Describe your career aspirations (e.g., work-life balance, high salary, creative work)" required></textarea>
+      </div>
+      
+      <button type="submit" class="submit-btn">
+        <span>Get Career Suggestions</span>
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <path fill="currentColor" d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
+        </svg>
+      </button>
+    </form>
+  </section>
+
+  {% if suggestions %}
+  <section class="results-section">
+    <h2 class="section-title">Your Career Recommendations</h2>
+    <div class="results-container">
+      {% for suggestion in suggestions %}
+      <div class="career-card">
+        <h3>{{ suggestion.title }}</h3>
+        <p class="match-score">Match: {{ suggestion.match_score }}%</p>
+        <p>{{ suggestion.description }}</p>
+        <div class="career-details">
+          <span><i class="fas fa-money-bill-wave"></i> Avg. Salary: {{ suggestion.salary }}</span>
+          <span><i class="fas fa-chart-line"></i> Growth: {{ suggestion.growth }}</span>
+          <span><i class="fas fa-graduation-cap"></i> Education: {{ suggestion.education }}</span>
+        </div>
+        <a href="#" class="learn-more">Learn More</a>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Choices.js for multi-select
+    new Choices('#skills', {
+      removeItemButton: true,
+      shouldSort: false,
+      placeholder: true,
+      searchEnabled: true,
+      classNames: {
+        containerInner: 'choices__inner',
+        input: 'choices__input',
+        item: 'choices__item',
+        button: 'choices__button'
+      }
+    });
+
+    new Choices('#interests', {
+      removeItemButton: true,
+      shouldSort: false,
+      placeholder: true,
+      searchEnabled: true,
+      classNames: {
+        containerInner: 'choices__inner',
+        input: 'choices__input',
+        item: 'choices__item',
+        button: 'choices__button'
+      }
+    });
+
+    // Add animation to form submission
+    const form = document.querySelector('.career-form');
+    if (form) {
+      form.addEventListener('submit', function() {
+        const button = this.querySelector('button[type="submit"]');
+        if (button) {
+          button.innerHTML = '<span>Analyzing...</span>';
+          button.disabled = true;
+        }
+      });
+    }
+  });
+</script>
+{% endblock %}

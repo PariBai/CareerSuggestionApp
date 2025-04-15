@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{% block title %}Career Suggestion{% endblock %}</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="stylesheet" href="{% static 'choices.min.css' %}">
+</head>
+<body>
+
+  <!-- Header -->
+  <!-- base.html -->
+<header class="main-header">
+    <a href="/" class="logo-link">Career Suggestion</a>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <nav class="nav-links" id="navMenu">
+      <a href="/" class="nav-item">Home</a>
+      <a href="/about" class="nav-item">About</a>
+      <a href="/contact" class="nav-item">Contact</a>
+    </nav>
+  </header>
+  
+
+  <!-- Main Content -->
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <p>&copy; 2025 Career Suggestion. All rights reserved.</p>
+    <p>Built with 💙 using Django + Gemini AI</p>
+  </footer>
+
+</body>
+</html>
+
+<script>
+    function toggleMenu() {
+      const menu = document.getElementById('navMenu');
+      menu.classList.toggle('show');
+    }
+  </script>

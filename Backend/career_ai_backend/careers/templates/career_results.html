@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Career Suggestions</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+  <div class="container1">
+  <h1>Career Suggestions</h1>
+  <div class="results-box">
+    <h2>Suggested Career For You</h2>
+    {{ suggestions|linebreaksbr }}</div>
+  <a href="/" class="back-btn">← Back to Form</a>
+</div>
+</body>
+</html>

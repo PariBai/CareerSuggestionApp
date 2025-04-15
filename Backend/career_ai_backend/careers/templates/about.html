@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}  
+{% block content %}
+<div class="container1">
+  <!-- Hero Section -->
+  <section class="about-hero">
+    <div class="hero-content2">
+      <h1 class="hero-title2">Discover Your Dream Career</h1>
+      <p class="hero-text2">
+        Unlock your potential with our AI-powered career guidance platform. 
+        We help you find the perfect career path tailored to your unique skills, 
+        interests, and aspirations.
+      </p>
+    </div>
+    <div class="hero-image2">
+        <img src="{% static 'images/career-path2.png' %}" alt="Career Path Illustration" class="img-responsive">
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="how-it-works">
+    <h2 class="section-title2">How It Works</h2>
+    <div class="steps-container">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Share Your Profile</h3>
+        <p>Tell us about your skills, interests, and career goals through our simple interface.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>AI Analysis</h3>
+        <p>Our advanced AI, powered by Gemini, analyzes your profile against thousands of career paths.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Get Recommendations</h3>
+        <p>Receive personalized career suggestions with detailed insights for each option.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <h2 class="section-title">Our Users Love Us</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="quote">"This app completely changed my career trajectory!"</div>
+        <div class="user">- Sarah, Marketing Professional</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="quote">"The AI suggestions were surprisingly accurate and helpful."</div>
+        <div class="user">- James, Recent Graduate</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="quote">"Finally found a career path that aligns with my passions."</div>
+        <div class="user">- Priya, Career Changer</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technology Section -->
+  <section class="technology">
+    <div class="tech-content">
+      <h2 class="section-title">Powered by Gemini AI</h2>
+      <p>
+        Our career recommendation engine leverages Google's cutting-edge Gemini AI technology 
+        to provide you with the most accurate and up-to-date career suggestions. 
+        The system continuously learns from the job market to give you relevant advice.
+      </p>
+    </div>
+    <div class="tech-image">
+     <img src="{% static 'images/download.jpg' %}" alt="Career Path Illustration" class="img-responsive">
+    </div>
+  </section>
+</div>
+
+
+{% endblock %}
