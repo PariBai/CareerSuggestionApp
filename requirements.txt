@@ -3,3 +3,4 @@ djangorestframework==3.16.0
 mongoengine==0.29.1
 protobuf==6.30.2
 python-decouple==3.8
+gunicorn==21.2.0
